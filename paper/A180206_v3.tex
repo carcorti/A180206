@@ -1,0 +1,649 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\NN}{\mathbb Z_{\geq 0}}
+\newcommand{\rev}{\operatorname{rev}}
+\title{Counting Permutations of Consecutive Triple Sums:\\[2pt]
+OEIS A180206 through \(n=26\)}
+\author{Carlo Corti\\Independent researcher\\\texttt{carlo.corti@outlook.com}}
+\date{November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Which permutations of \(0,\ldots,n-1\) occur as consecutive triple
+sums of nonnegative integers? The zero sum fixes three entries of the
+realizing vector. Reading outwards from those entries gives two words on
+complementary label sets and determines the entire vector uniquely.
+We count the words by a weighted subset recurrence whose continuation state
+is an ordered pair. A congruence modulo three restricts each subset to one residue class
+of pairs (117 of 351 pairs at \(n=26\)). A second enumeration allows repeated labels and removes
+them by inclusion--exclusion. The two computations agree for every
+\(1\le n\le26\), extending the historical sixteen-term prefix of
+OEIS A180206 by ten terms, with \(a(26)=1688253382074096582\).
+A separate membership test based on cumulative differences checks the
+definition exhaustively in Python through \(n=8\) and in a separate C
+program through \(n=11\). A forward count from all possible starting pairs,
+carried out after the original computation, agrees through \(n=21\).
+Explicit permutations distinguish
+the admissible sets for windows of lengths two, three and four.
+\end{abstract}
+
+\noindent\textbf{2020 Mathematics Subject Classification.}
+Primary 05A05. Secondary 05A15, 05A19.
+
+\smallskip
+\noindent\textbf{Key words and phrases.}
+Permutation, consecutive sums, nonnegative realization, subset dynamic
+programming, inclusion--exclusion, OEIS A180206.
+
+\section{The inverse problem}
+
+Let \(p=(p_0,\ldots,p_{n-1})\) be a permutation of \(0,\ldots,n-1\),
+where \(n\ge1\). A \emph{realization} of \(p\) is a vector
+\(x=(x_0,\ldots,x_{n+1})\in\NN^{n+2}\) such that
+\begin{equation}
+ p_i=x_i+x_{i+1}+x_{i+2}\qquad(0\le i<n).
+ \label{eq:def}
+\end{equation}
+Write \(a(n)\) for the number of permutations admitting a realization. Reversals count separately
+whenever they differ.
+The entries of \(x\) may repeat. For example, \((2,0,1,3)\) is realized by
+\((2,0,0,0,1,2)\). The position of the zero already determines the three
+central entries in this example. Their two neighbours, and then every
+remaining entry, can be read off from the prescribed sums.
+
+R.~H. Hardin introduced this sequence as OEIS A180206, with initial
+index 1 and author date 15 August 2010. The historical entry used at
+the start of this computation lists \(a(1),\ldots,a(16)\), ending at
+\(612195224\). On 18 November 2026 the OEIS text entry, its synthesized
+b-file and the official OEIS data mirror gave the same sixteen terms~\cite{hardin}. Table~\ref{tab:terms} gives
+the ten subsequent values computed here. The comparison throughout is with
+this documented baseline.
+
+The constructions for adjacent pairs and for windows of four in
+A180205 and A180207~\cite{hardintwo,hardinfour,two,four} suggest counting outwards
+from zero. Three adjacent summands require keeping two successive entries
+of the realization. The distinction matters even for words ending with
+the same sum of those two entries, as shown in Section~\ref{sec:weights}.
+There is also a forward problem for exactly the same linear map:
+Hardin's A229561 counts its distinct output arrays when the \emph{input}
+is a permutation~\cite{forward}. In \eqref{eq:def} the permutation
+constraint is on the output and nonnegativity is the constraint on the input.
+
+\section{Two words determined by the zero}\label{sec:zero}
+
+Start with the pair \((0,0)\). Reading a positive label \(v\) in state
+\((a,b)\) appends the realization entry \(c=v-a-b\) and replaces the pair
+by \((b,c)\). A word is \emph{admissible} if each appended entry is
+nonnegative. For a finite set \(S\) of distinct positive integers let \(F(S)\)
+count the admissible orderings of precisely its elements. The empty word
+contributes \(F(\varnothing)=1\). Write \(U_m=\{1,\ldots,m\}\), with
+\(U_0=\varnothing\).
+
+\begin{theorem}\label{thm:split}
+Each feasible permutation has exactly one realization. For \(m=n-1\)
+there is a bijection between the feasible permutations and the triples
+\((S,L,R)\) where \(S\subseteq U_m\), \(L\) is an admissible ordering of
+\(S\), and \(R\) an admissible ordering of \(U_m\setminus S\). Consequently
+\begin{equation}
+ a(n)=\sum_{S\subseteq U_m}F(S)F(U_m\setminus S).
+ \label{eq:split}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let \(p_k=0\). Nonnegativity in \eqref{eq:def} forces
+\(x_k=x_{k+1}=x_{k+2}=0\). To move right, use \(p_{k+1}\) and the
+last two zeros to determine \(x_{k+3}\), then use \(p_{k+2}\) and
+the last two known entries, and so on. To move left, start with
+\(x_{k+1},x_k\) and use \(p_{k-1},p_{k-2},\ldots,p_0\) in that order.
+For a left window \(p_i\) the pair is read as \((x_{i+2},x_{i+1})\),
+so the new entry is \(x_i=p_i-x_{i+2}-x_{i+1}\) and the new pair is
+\((x_{i+1},x_i)\). This determines every
+entry of any realization and produces admissible words \(L,R\).
+
+Conversely, starting at the zero pairs, let \(y_L,y_R\) be the lists
+of entries appended by the words \(L,R\), respectively. Concatenate
+\(\rev(y_L),(0,0,0),y_R\). Writing \(k=|S|\), the length is \(k+3+(m-k)=n+2\). The
+\(j\)-th outward label lies in window \(k-j\) on the left
+and \(k+j\) on the right, for the respective word lengths.
+The windows on each side have exactly the prescribed sums by construction.
+The middle window has sum zero, and no window meets both appended lists.
+The resulting permutation is \((\rev(L),0,R)\), from which one recovers
+\(S,L,R\). This includes an empty word on either side. At \(n=1\)
+both are empty and the sole realization is \((0,0,0)\).
+\end{proof}
+
+For a fixed \(S\), choosing \(L\) and \(R\) fills every position in the
+permutation. The summation already runs over the actual left label sets.
+For \(m>0\) one may sum over \(S\) omitting \(m\) and double the result,
+since the summands for complementary sets agree.
+
+\begin{corollary}\label{cor:bounds}
+For \(n>1\), \(a(n)\) is even. For \(n\ge1\),
+\(a(n+1)\ge2a(n)\) and \(2^{n-1}\le a(n)\le n!\).
+\end{corollary}
+\begin{proof}
+Reversing a realization reverses its windows. An ordered permutation with
+two or more distinct entries differs from its reversal, giving pairs.
+For the second assertion, append the label \(n\) to a feasible permutation
+of length \(n\). Its last two realization entries sum to at most
+\(p_{n-1}\le n-1\), so appending \(x_{n+2}=n-x_n-x_{n+1}\) gives a
+nonnegative entry. Reversal gives the corresponding construction at the
+left end. Each map is injective by deleting \(n\), and their images are
+disjoint by the position of \(n\). Iterate from \(a(1)=1\). The upper bound
+counts all permutations.
+\end{proof}
+
+\subsection{A membership test using the original windows}\label{sec:direct}
+
+A single permutation can be tested in linear time without locating its
+zero. The following criterion also applies to an arbitrary list of
+nonnegative integer sums \(p_0,\ldots,p_{n-1}\).
+
+\begin{proposition}\label{prop:direct}
+For \(r=0,1,2\), form a list starting at zero and adding, in increasing
+order of \(i\), the differences \(p_{i+1}-p_i\) with \(0\le i<n-1\)
+and \(i\equiv r\pmod3\). Let \(m_r\) be the negative of the minimum
+of the resulting partial sums, including the initial zero. A realization
+exists if and only if \(\sum_r m_r\le p_0\).
+\end{proposition}
+\begin{proof}
+Subtract consecutive equations in \eqref{eq:def} to get
+\(x_{i+3}-x_i=p_{i+1}-p_i\). Every entry in residue class \(r\)
+is its initial value \(x_r\) plus the corresponding partial sum.
+All entries in that class are nonnegative exactly when \(x_r\ge m_r\).
+For \(n=1\) the three lists contain only their initial zero.
+Choose integers satisfying the three lower bounds and
+\(x_0+x_1+x_2=p_0\). This is possible exactly under the stated inequality.
+The first window is then correct and the differences imply the rest.
+If \(p\) is a feasible permutation, the slack must be zero: positive
+slack could all be added to \(x_0\) or all to \(x_1\), giving
+different realizations, contrary to Theorem~\ref{thm:split}.
+\end{proof}
+
+\section{Counting tails with multiplicity}\label{sec:weights}
+
+The use of a visited subset and terminal data follows the classical
+subset dynamic programs of Bellman and Held and Karp~\cite{bellman,held}.
+Here the terminal data consist of two realization entries, and a state
+accumulates the number of admissible orderings.
+
+Let \(W(S,a,b)\) count the admissible words on \(S\) whose terminal pair
+is \((a,b)\). Initially only \(W(\varnothing,0,0)=1\) is nonzero.
+An unused positive label \(v\ge a+b\) carries the entire weight to
+\(W(S\cup\{v\},b,v-a-b)\). Grouping words by their final label gives
+the equivalent destination-row recurrence, for \(S\ne\varnothing\),
+\begin{equation}
+ W(S,b,c)=\sum_{\substack{v\in S\\v\ge b+c}}
+       W(S\setminus\{v\},v-b-c,b),\qquad
+ F(S)=\sum_{b,c\ge0}W(S,b,c).
+ \label{eq:pull}
+\end{equation}
+Indeed the last label and destination pair determine the predecessor
+pair uniquely. Removing the last label strictly decreases the cardinality.
+Induction from the empty word therefore counts every admissible ordering
+once, including distinct histories with the same terminal pair.
+
+For example, \((2,4,5,3)\) and \((3,4,5,2)\) both end at \((1,0)\) on
+the same label set. A Boolean state loses their multiplicity.
+Keeping just \(a+b\) loses information even if each state is weighted.
+On \(U_5\) the words \((1,2,4,3,5)\) and \((1,2,3,5,4)\) end at
+\((0,3)\) and \((3,0)\). Continuing in \(U_7\), after appending 7 the pairs become \((3,4)\)
+and \((0,4)\). Only the second now admits label 6.
+
+\begin{proposition}\label{prop:slice}
+For \(S\ne\varnothing\), every reachable pair satisfies
+\begin{equation}
+ a+b\le\max S,\qquad 2a+b\equiv\sum_{v\in S}v\pmod3.
+ \label{eq:res}
+\end{equation}
+Every finite set of positive labels admits its increasing word.
+\end{proposition}
+\begin{proof}
+If the last label read is \(v_h\), nonnegativity gives \(a+b\le v_h\le\max S\). The initial
+pair has residue zero, and for \(c=v-a-b\) we have
+\(2b+c=(2a+b)+v-3a\). This proves the congruence by induction.
+For the increasing word \(v_1<\cdots<v_h\), denote the appended entries
+by \(y_1,\ldots,y_h\), with \(y_{-1}=y_0=0\). We have \(y_1=v_1\)
+when \(h>0\), and for \(1\le j<h\),
+\(y_{j+1}=y_{j-2}+v_{j+1}-v_j\). All appended entries are positive.
+\end{proof}
+
+The restriction \eqref{eq:res} acts on pairs within a subset. For instance,
+\(S=\{3\}\) admits only \((0,3)\), although \((0,0)\) passes both
+restrictions. The coefficient also depends on the values of the labels.
+For a word of at most three distinct positive labels the appended entries
+are its first label and its successive differences, so its only admissible
+ordering is increasing. In particular \(F(\{1,2,3\})=F(\{1,2,4\})=1\).
+For four labels the first three must still increase. If the word is
+\((u,v,w,z)\), the fourth entry is \(u+z-w\). Choosing the last label
+and testing this inequality gives
+\[
+ \begin{split}
+ F(\{1,2,3,4\})&=2 \quad\text{from }(1,2,3,4),(1,2,4,3),\\
+ F(\{1,2,3,5\})&=1 \quad\text{from }(1,2,3,5).
+ \end{split}
+\]
+Thus \(a(5)=14+2\cdot2=18\): the fourteen nonempty proper subsets
+of \(U_4\) each contribute one in \eqref{eq:split}.
+
+\subsection{Packed rows and arithmetic}\label{sec:impl}
+
+A job with maximum length \(N\) first evaluates \eqref{eq:pull} over
+subsets of \(U_M\), \(M=N-1\), then uses \eqref{eq:split} for each
+\(U_m\) with \(0\le m\le M\). A row is indexed by a subset.
+For residue \(r\) list the pairs in \(a+b\le M\) with
+\(2a+b\equiv r\pmod3\). Let \(K\) be the largest of the three list
+lengths. Each row occupies \(K\) cells, with any padding zero. For each
+destination residue and last label, store the pairs of predecessor and
+destination slots in advance. If the destination is \((b,c)\) in
+class \(r=\sum_{u\in S}u\bmod3\), label \(v\) uses the slot for
+\((v-b-c,b)\) in the predecessor's own class \(r-v\bmod3\). At \(N=26\) the full triangle contains
+\(\binom{27}{2}=351\) pairs, distributed \(117,117,117\).
+
+For zero-based bit positions \(d_1<\cdots<d_h\) (label \(d_i+1\)),
+the combinatorial number system gives the zero-based rank in
+colexicographic order among subsets of size \(h\) as
+\(\sum_{i=1}^h\binom{d_i}{i}\)~\cite{colex}, taking a binomial coefficient
+as zero when the lower index exceeds the upper one. Grouping subsets by
+their largest bit gives this formula recursively: \(\binom{d_h}{h}\)
+subsets have a smaller largest bit. For deletion of \(d_j\) the rank becomes
+\(\sum_{i<j}\binom{d_i}{i}+\sum_{i>j}\binom{d_i}{i-1}\).
+One prefix and one suffix array therefore supply all deletion ranks in
+\(O(h)\) arithmetic operations per row. The algorithm reads from layer
+\(h-1\) and assigns each destination row of layer \(h\) to one OpenMP
+worker. Row writes and the corresponding \(F\) writes are disjoint.
+After the layer finishes only its successor needs the detailed weights.
+The \(F\) array retains all \(2^M\) row totals for the final sums.
+Its address is the local rank plus \(\sum_{i=0}^{h-1}\binom{M}{i}\).
+
+Each ordering on \(h\) labels produces at most one path, so every cell,
+row total, and nonnegative partial cell sum is bounded by \(h!\).
+Since \(20!<2^{64}<21!\), the producer stores \(W\) cells in
+\texttt{uint64\_t} through \(h=20\). At \(h=21\) it widens inputs
+before addition, and from then on stores unsigned 128-bit cells.
+All \(F\) values, products and final accumulators use 128 bits.
+A complementary product counts a subclass of permutations, as does
+each partial sum in \eqref{eq:split}, including the contribution obtained
+by doubling a partial sum over unpaired representatives. The bound
+\(n!\le28!<2^{98}\) covers the full implementation domain.
+The type \texttt{unsigned \_\_int128} is a compiler extension on supported
+targets~\cite{gcc}.
+
+Writing \(s_h=8\) for \(h\le20\) and \(s_h=16\) otherwise, the principal
+arrays at a layer transition use at most
+\[
+ 16\,2^M+K\max_{0\le h<M}
+ \left\{\binom{M}{h}s_h+\binom{M}{h+1}s_{h+1}\right\}
+ \quad\text{bytes}\qquad(M\ge1).
+\]
+The triangle contains \(\binom{M+2}{2}\) pairs before slicing.
+For \(M=25\) the array bound is \(10\,271\,832\,512\) bytes. A simple upper bound
+on cell reads for the recurrence is \(K M2^{M-1}\), since each label belongs
+to half the subsets. The precomputed edge lists reduce the actual number.
+The convolution for one \(m>0\) requires only \(2^{m-1}\) products.
+
+\section{A recount over alphabets with repetitions}\label{sec:ie}
+
+Fix \(m\), and allow each label in \(T\subseteq U_m\) to be used any
+number of times. Let \(L_j(T)\) count admissible words of length \(j\)
+on this alphabet, including \(L_0(T)=1\). These counts require only the
+length and the terminal pair. Initialize a single unit at \((0,0)\).
+For each successive length, start a fresh zero row on the full triangle
+and add the predecessor weight along \((a,b)\to(b,v-a-b)\) for
+each \(v\in T\) satisfying \(v\ge a+b\).
+The sum of the new row is \(L_j(T)\). The checker uses both coordinates
+of the full triangle with its own numbering, without the residue partition
+or the producer's subset ranks.
+
+\begin{theorem}\label{thm:ie}
+For every \(m\ge0\),
+\begin{equation}
+ a(m+1)=\sum_{T\subseteq U_m}(-1)^{m-|T|}
+             \sum_{j=0}^{m} L_j(T)L_{m-j}(T).
+ \label{eq:ie}
+\end{equation}
+\end{theorem}
+\begin{proof}
+The inner sum counts ordered pairs of words with total length \(m\).
+Fix such a pair and let \(D\) be the set of all labels it actually uses.
+It contributes for exactly the alphabets \(D\subseteq T\subseteq U_m\).
+If a label is missing, toggling that label pairs equal contributions
+of opposite signs. If \(D=U_m\), the sole contribution has sign \(+1\).
+There are exactly \(m\) positions, so a surviving pair uses each of the
+\(m\) labels exactly once. Theorem~\ref{thm:split} identifies it with one
+feasible permutation. For \(m=0\) the two empty words give one.
+\end{proof}
+
+This is inclusion--exclusion on the Boolean lattice~\cite{rota}.
+A related use of inclusion--exclusion counts Hamiltonian paths by
+enforcing coverage in a walk count~\cite{karpie,bax}. In \eqref{eq:ie}
+the objects to cover are the transition labels across two words. The
+vertices are terminal pairs and may be visited repeatedly.
+
+In a
+job of maximum \(N\) each alphabet \(T\subseteq U_M\) supplies lengths
+through \(M=N-1\) and contributes to each prefix \(m\) with
+\(T\subseteq U_m\), equivalently \(\max(T)\le m\le M\), using
+\(\max(\varnothing)=0\).
+The C++ checker evaluates \eqref{eq:ie} in two arithmetic channels, one modulo each of
+\(P=2^{61}-1\) and \(Q=2^{61}-3\). For either modulus, adding two
+reduced residues fits in 64 unsigned bits and their product fits in
+128. The two moduli are odd and differ by two, hence are coprime.
+For reduced residues \(u\bmod P\) and \(v\bmod Q\), a separate Python
+program returns
+\[
+ t=u+P\bigl((v-u)P^{-1}\bmod Q\bigr),\qquad 0\le t<PQ.
+\]
+It checks completed alphabet coverage and refuses \(t>n!\).
+As \(28!<2^{98}<PQ\), the complete correct residues determine the exact
+count over the entire supported range. For every reported \(n\), \(a(n)<Q<P\), so each final
+residue already equals the displayed integer. Intermediate word counts
+and alternating sums are computed in modular arithmetic. The two channels
+use the same transitions and arithmetic routines. Agreement with the
+separate weighted subset enumeration tests the count beyond what can
+be learned from reconstructing the two residues alone.
+
+\section{Computational result and checks}\label{sec:results}
+
+\begin{theorem}[Computational result]\label{thm:result}
+For \(17\le n\le26\), the numbers of permutations satisfying
+\eqref{eq:def} are those in Table~\ref{tab:terms}.
+\end{theorem}
+\begin{proof}[Computational verification]
+The weighted recurrence \eqref{eq:pull} and complementary sum \eqref{eq:split}
+were evaluated for complete prefixes ending at 24 and 26. Separate runs
+of \eqref{eq:ie} covered all \(2^{23}\) and \(2^{25}\) alphabets,
+respectively. For each maximum, the complete reconstructed list agreed
+entry by entry with the producer and reproduced the sixteen historical terms.
+The second job includes \(a(25)\). The ten entries displayed here are the
+corresponding rows of the resulting contiguous table.
+\end{proof}
+
+\begin{table}[htbp]\centering
+\caption{Exact extension of the sixteen-term baseline for A180206.
+Both blocks are indexed by the permutation length.}\label{tab:terms}
+\begin{tabular}{rr@{\qquad}rr}\toprule
+\(n\)&\(a(n)\)&\(n\)&\(a(n)\)\\\midrule
+17 & 4379508168    & 22 & 170531561222304\\
+18 & 33039187452   & 23 & 1606250624929548\\
+19 & 261553618840  & 24 & 15740000714297474\\
+20 & 2171808605286 & 25 & 160065864659464904\\
+21 & 18838224530962& 26 & 1688253382074096582\\\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Checks against the definition.}
+Proposition~\ref{prop:direct} was evaluated on every permutation for
+each \(1\le n\le8\), giving \(1,2,4,8,18,56,206,866\).
+Every ordering of each of the 128 subsets of \(U_7\) was also examined,
+checking the coefficients individually. An unpacked Python subset recurrence
+with arbitrary-precision weights reproduced \(a(1),\ldots,a(16)\).
+A separate C implementation of the difference criterion tested every
+permutation through \(n=11\). Enumeration of all feasible starting pairs
+for every permutation through 9 found no permutation with two realizations.
+Further locally executed tests compared all \(2^{15}\) tail coefficients
+on subsets of \(U_{15}\) with a separate implementation. A transfer computation
+starting with every pair \((x_0,x_1)\) of sum at most \(n-1\) also
+reproduced the first sixteen terms. These were the limits of the
+definition and transfer checks available at consolidation.
+
+\paragraph{A subsequent forward count.}
+During manuscript review a separately written C program was run locally
+for each \(1\le n\le21\). It begins with one empty history at every
+nonnegative pair \((a,b)\) with \(a+b\le n-1\). Its subset records
+which window sums in \(\{0,\ldots,n-1\}\), including zero, have been
+used. From \((a,b)\) it appends any unused label \(v\ge a+b\) and
+moves to \((b,v-a-b)\). Summing the terminal weights for the full
+subset counts pairs of a permutation and its realization. Every realization
+appears, since its first two entries sum to at most its first window.
+A zero window forces three zeros and hence makes the realization unique.
+This enumeration proceeds from left to right without splitting at zero.
+All 21 totals agreed, including the first five new terms. Cell additions
+were checked for overflow. Through \(n=20\) the final sum fits in 64 bits
+by the factorial bound. At \(n=21\) a second run also checked every
+addition in that final sum. A separate review program compared explicit
+starting-pair enumeration with the difference criterion on every permutation
+through \(n=11\), with no disagreement or multiple realization.
+
+For \(22\le n\le26\) the complete numerical comparison reported here
+is between the weighted subset and alphabet enumerations. They share the
+zero decomposition and local transition. CRT reconstructs the outputs
+of the alphabet enumeration.
+
+\paragraph{Checks on the implementation.}
+The release regression suite (101 invocations) compared one and eight requested workers against
+the historical prefix through 16 and exercised interrupted and resumed
+computations. A separate numerical fixture checked 768 synthetic rows
+across cardinalities 20, 21 and 22. A forced accumulation of \(21!\)
+exercised a value above the 64-bit limit. Clang and address/undefined-behaviour
+sanitizer matrices were also exercised on the smaller test domain through 8.
+Leak detection was disabled for the OpenMP address-sanitized tests.
+The thread-sanitized tests used Archer, excluded noninstrumented modules,
+and omitted the file-size-limit cases. A deliberate race and a race-free
+control distinguished the two outcomes. A compatible single-worker
+Valgrind build was checked at 8, and clang-tidy and Cppcheck diagnostics
+were examined. These are finite software checks. The numerical evidence
+for Table~\ref{tab:terms} comes from the two completed enumerations.
+
+\paragraph{Execution and retained evidence.}
+The computations used an AMD Ryzen 9 7940HS (8 cores, 16 logical CPUs)
+under Linux Mint 22.3 (kernel \texttt{6.17.0-42-generic}), with eight
+OpenMP workers requested. The GCC and
+G++ 13.3.0 builds used C17 and C++17 language modes, respectively, with
+\texttt{-O3 -march=native -fopenmp}. The C build also used
+\texttt{-mtune=native -flto -funroll-loops -fomit-frame-pointer}.
+The producer's startup test requires the array allocation estimate
+plus \(8.5\,\mathrm{GiB}\) of available memory under Linux, even for small
+jobs. Python 3.12.3 handled reconstruction. Table~\ref{tab:cost} gives the
+measured costs. For example, at maximum 26 the checker performed
+\(2M2^{M-1}\sum_{v=1}^{M}\binom{v+2}{2}
+=2\,747\,269\,120\,000\) modular edge additions, for \(M=25\):
+each alphabet containing \(v\) traverses its triangle of edges at
+each length in both channels.
+
+\begin{table}[htbp]\centering
+\caption{Measured costs of complete prefix jobs. Times are rounded to whole
+seconds. DP and IE are the weighted producer and the alphabet checker.
+Peak resident set sizes refer to each individual numerical child process.
+The group wall includes verification and consolidation. CPU sums user and
+system time of the two numerical processes.}\label{tab:cost}
+\small
+\begin{tabular}{rrrrrrr}\toprule
+ &\multicolumn{3}{c}{Wall time (s)}&CPU (s)&\multicolumn{2}{c}{Peak RSS (KiB)}\\
+\cmidrule(lr){2-4}\cmidrule(lr){6-7}
+\(N\)&DP&IE&Group&DP + IE&DP&IE\\\midrule
+24&10&45&55&286&2204952&20176\\
+26&46&243&289&1517&9855552&20212\\\bottomrule
+\end{tabular}
+\end{table}
+
+Together the two jobs took about 344 seconds of group wall time,
+excluding operator pauses and subsequent audit repetitions. Both native
+programs checked their respective completed states before consolidation.
+The producer checked committed spans of subset totals against their
+recorded digests and bounds and compared the surviving last-layer row
+totals with the corresponding subset totals. The checker verified its
+committed state and coverage. Those four read-only checks were repeated
+after the campaign, together
+with one further CRT reconstruction at each maximum. The stored residues
+and controls still permit reconstruction and comparison of every row.
+The two full subset-count tables and the two surviving last-layer files
+were subsequently discarded without an archive. The original producer
+state can therefore no longer undergo its complete on-disk audit. The
+retained result tables, program sources and validation records document
+the computations described in the project reference~\cite{project}.
+
+\section{What transfers to other window lengths?}\label{sec:widths}
+
+For an unweighted window of length \(w\ge2\), its zero forces \(w\)
+consecutive zeros. The outward update appends the next label minus the
+sum of the preceding \(w-1\) entries. Thus A180205 uses a scalar and
+A180207 uses a triple~\cite{hardintwo,hardinfour,two,four}. The decomposition into
+two words applies to all three widths. The admissible words themselves
+change with \(w\). At length 5 the three counts, in width order, are
+\(44,18,16\). Even strict inequalities between counts at a fixed length
+need not express containment.
+
+For example, \(p=(0,1,2,4,3,6,5)\) is feasible at width three:
+its right-hand appended entries are \((1,1,2,0,4,1)\). At widths two
+and four the right updates first fail at the final label 5 and at label 3,
+respectively, each requiring an entry of \(-1\).
+Conversely, take \(p=(1,0,2,3,5,6,4)\). The left tail appends 1 at all
+three widths. On the right, widths two and four append \((2,1,4,2,2)\)
+and \((2,1,2,1,0)\). Width three appends \(2,1,2,3\), after which the
+last label 4 would require \(4-2-3=-1\). Thus at the same length 7 the
+width-three class is incomparable by inclusion with each neighbouring
+class. The neighbouring counts cannot be substituted as counts of the
+same objects.
+
+\section{Conclusion}
+
+The enumeration extends Hardin's sixteen-term baseline to a contiguous
+table through \(a(26)=1688253382074096582\). Its central reduction is
+that a zero sum determines the realization in both directions. What
+remains to count on each side is an ordering of specified labels, with
+two entries of memory and a computable residue class for their terminal
+pair. Dropping distinctness within each tail and enforcing it globally by
+inclusion--exclusion gives the same ten additional integers. The first
+length beyond this computation is 27.
+
+\section*{Data availability}
+The author retains the indexed counts, original producer result lists,
+modular outputs and controls, build identities, comparison receipts and
+reconstruction code. The reconstruction program reads the exact checker
+executable as data to verify its identity. It requires no execution of
+that native binary. The stored records support comparison of both original
+result lists with the integers reconstructed from the committed residues.
+For the subsequent checks, the author retains both C sources, the exact
+one-line change that checks the terminal sum, and the local execution
+records. Both programs and the modified version were compiled with
+GCC 13.3.0 using \texttt{-std=c17 -O2}.
+The discarded subset tables and layers have no archive. Recomputing them
+would generate new states. A public release of this project
+has yet to be verified. The GitHub address in the References designates
+the intended repository. The Zenodo DOI placeholder will be replaced
+after the first Zenodo publication when the author supplies the verified
+official locator.
+
+\section*{AI use disclosure}
+OpenAI Codex assisted with mathematical analysis, implementation and
+drafting. Code review also drew on reports from OpenAI and from tools
+identified in the project records as Claude, GLM, MiniMax, Qwen and
+Meta AI (self-reported Muse family). Additional comments were received through Gemini and
+Grok. Some deployed model versions could not be established.
+
+\noindent\textit{Mathematical analysis.}
+Codex and a NotebookLM consultation helped compare the adjacent-window
+methods and formulate checks of the pair recurrence. The congruence and
+the examples distinguishing label sets were verified from the transition.
+The historical prefix was checked against Hardin's entry.
+
+\noindent\textit{Algorithm and code.}
+Codex assisted with the weighted producer, the modular recount and
+their tests. Code-review reports drew attention to resource checks on
+restart, checkpoint coverage and the integer-width transition. Numerical
+claims rest on the local result tables, stored residues, and executed
+comparisons. They do not rely on conversational assertions or reviewer
+agreement.
+
+\noindent\textit{Manuscript.}
+Codex assisted with exposition, literature checks and the comparison of
+proofs, table entries and computational claims with the source programs
+and original execution records. External manuscript reviews identified
+the methodological references and suggested clarifications to the evidence
+and attribution. The two review programs used for the subsequent checks
+were supplied through Claude. Their numerical results were checked by
+local execution. Carlo Corti takes full scientific
+responsibility for the mathematical statements, algorithm, implementation,
+numerical results, validation boundaries and conclusions.
+
+\clearpage
+\begin{thebibliography}{99}
+\raggedright
+
+\bibitem{hardin}
+R.~H. Hardin, Number of permutations of \(0..(n-1)\) representable as
+consecutive sums of 3 adjacent elements of a sequence of \(n+2\)
+nonnegative integers, A180206, \emph{The On-Line Encyclopedia of Integer
+Sequences}, 15 August 2010. \url{https://oeis.org/A180206}.
+Indexed table consulted 18 November 2026,
+\url{https://oeis.org/A180206/b180206.txt}.
+Official data mirror, revision 10, 8 November 2024,
+\url{https://github.com/oeis/oeisdata/blob/main/seq/A180/A180206.seq}.
+
+\bibitem{hardintwo}
+R.~H. Hardin, OEIS entry A180205 (adjacent pairs), 15 August 2010.
+\url{https://oeis.org/A180205}.
+
+\bibitem{hardinfour}
+R.~H. Hardin, OEIS entry A180207 (windows of length four), 15 August 2010.
+Revision 15, 15 November 2026, credits C. Corti for terms 17--22.
+\url{https://oeis.org/A180207/internal}.
+
+\bibitem{two}
+C. Corti, \emph{A180205: exact enumeration through \(n=28\)},
+Zenodo release series (adjacent-sum permutations), 2026.
+\url{https://doi.org/10.5281/zenodo.24311714}.
+
+\bibitem{four}
+C. Corti, \emph{A180207: exact enumeration through \(n=22\)},
+Zenodo release series (four-window permutations), 2026.
+\url{https://doi.org/10.5281/zenodo.24194032}.
+
+\bibitem{forward}
+R.~H. Hardin, Number of arrays of length \(n\) that are sums of 3
+consecutive elements of length \(n+2\) permutations of \(0..n+1\), A229561, \emph{The On-Line Encyclopedia of Integer Sequences},
+26 September 2013. \url{https://oeis.org/A229561}.
+
+\bibitem{bellman}
+R. Bellman, Dynamic programming treatment of the travelling salesman
+problem, \emph{J. ACM} \textbf{9} (1962), 61--63.
+
+\bibitem{held}
+M. Held and R.~M. Karp, A dynamic programming approach to sequencing
+problems, \emph{J. Soc. Indust. Appl. Math.} \textbf{10} (1962), 196--210.
+\url{https://doi.org/10.1137/0110015}.
+
+\bibitem{karpie}
+R.~M. Karp, Dynamic programming meets the principle of inclusion and
+exclusion, \emph{Oper. Res. Lett.} \textbf{1} (1982), 49--51.
+
+\bibitem{bax}
+E.~T. Bax, Inclusion and exclusion algorithm for the Hamiltonian path
+problem, \emph{Inform. Process. Lett.} \textbf{47} (1993), 203--207.
+
+\bibitem{colex}
+V. Kruchinin, Y. Shablya, D. Kruchinin and V. Rulevskiy,
+Unranking Small Combinations of a Large Set in Co-Lexicographic Order,
+\emph{Algorithms} \textbf{15} (2022), no.~2, article 36.
+\url{https://doi.org/10.3390/a15020036}.
+
+\bibitem{gcc}
+GNU Project, \emph{Using the GNU Compiler Collection}, ``128-bit Integers,''
+consulted November 2026.
+\url{https://gcc.gnu.org/onlinedocs/gcc/_005f_005fint128.html}.
+
+\bibitem{rota}
+G.-C. Rota, On the foundations of combinatorial theory I. Theory of
+M\"obius functions, \emph{Z. Wahrscheinlichkeitstheorie verw. Gebiete}
+\textbf{2} (1964), 340--368.
+\url{https://doi.org/10.1007/BF00531932}.
+
+\bibitem{project}
+C. Corti, \emph{Counting Permutations of Consecutive Triple Sums:
+OEIS A180206 through \(n=26\)}, GitHub repository and Zenodo archive, 2026.
+\url{https://github.com/carcorti/A180206}.
+\url{https://doi.org/10.5281/zenodo.xxxxxxxx}.
+Intended release locators. The DOI placeholder awaits the first publication
+on Zenodo and the author's verified official locator.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,861 @@
+{
+  "schema": 1,
+  "sequence": "A180206",
+  "status": "PACKAGE_DRAFT — AWAITING AUTHOR INSPECTION",
+  "archive": "proof/run.tgz",
+  "archive_sha256": "6da7325c1dae40e5e28f1fc4e025ac45d02c2fe6fb84f72df36775c25b64acb9",
+  "archive_members": 71,
+  "archive_content_bytes": 2307735,
+  "entries": [
+    {
+      "original": "src/a180206.c",
+      "public": "src/a180206.c",
+      "member": null,
+      "sha256": "f9a6772a9f3d57d6387c9959165a6601dbe3ff4c34b2f0f6e963effe0a1edc60",
+      "bytes": 33413,
+      "original_mode": "0o664",
+      "role": "Exact campaign source/build/reconstruction; shared with historical identity checks"
+    },
+    {
+      "original": "src/Makefile",
+      "public": "src/Makefile",
+      "member": null,
+      "sha256": "0dd831aaeb4c3bcd5a6cae9dc63c644092d1bee501e414272d911e947baaebed",
+      "bytes": 891,
+      "original_mode": "0o664",
+      "role": "Exact campaign source/build/reconstruction; shared with historical identity checks"
+    },
+    {
+      "original": "check/ie.cpp",
+      "public": "check/ie.cpp",
+      "member": null,
+      "sha256": "861741b4b72f16f3adaf8794bec0bf79da1e5699c6c44b2327c91ceb34c82994",
+      "bytes": 11751,
+      "original_mode": "0o664",
+      "role": "Exact campaign source/build/reconstruction; shared with historical identity checks"
+    },
+    {
+      "original": "check/crt.py",
+      "public": "check/crt.py",
+      "member": null,
+      "sha256": "024e87850895c51fc660535af6ba8d657cafa4f786bc262c304d34b57065214f",
+      "bytes": 4233,
+      "original_mode": "0o664",
+      "role": "Exact campaign source/build/reconstruction; shared with historical identity checks"
+    },
+    {
+      "original": "check/test.py",
+      "public": "check/test.py",
+      "member": null,
+      "sha256": "98d2430904727b64e15400b1e8e8f704c61db509adae7d73f5b4bb93a8059b05",
+      "bytes": 10378,
+      "original_mode": "0o664",
+      "role": "Runnable finite regression or qualification fixture; no new sequence term"
+    },
+    {
+      "original": "check/qualify.py",
+      "public": "check/qualify.py",
+      "member": null,
+      "sha256": "cfdfcb83d9267f75961b1b61800e2d4748055f60a306514c9a820a13ff57869f",
+      "bytes": 6466,
+      "original_mode": "0o664",
+      "role": "Runnable finite regression or qualification fixture; no new sequence term"
+    },
+    {
+      "original": "check/remediate.py",
+      "public": "check/remediate.py",
+      "member": null,
+      "sha256": "60a8a5d1bd2630a03d8b3e9f6a17ae372b65aa938f9c7695482e17a41edaf721",
+      "bytes": 8616,
+      "original_mode": "0o664",
+      "role": "Runnable finite regression or qualification fixture; no new sequence term"
+    },
+    {
+      "original": "check/closure.py",
+      "public": "check/closure.py",
+      "member": null,
+      "sha256": "804d2082b0c90ce0b9c4b848f26969bb602fb21de5e8b9d5ddb95327d85fec74",
+      "bytes": 4912,
+      "original_mode": "0o664",
+      "role": "Runnable finite regression or qualification fixture; no new sequence term"
+    },
+    {
+      "original": "check/numeric.py",
+      "public": "check/numeric.py",
+      "member": null,
+      "sha256": "93a5bb1bce824a082ebde3151d6b767f0e96455e2a160856d05ef2740a8b12d1",
+      "bytes": 1451,
+      "original_mode": "0o664",
+      "role": "Runnable finite regression or qualification fixture; no new sequence term"
+    },
+    {
+      "original": "check/kernel.c",
+      "public": "check/kernel.c",
+      "member": null,
+      "sha256": "ec21ce3e5d31c97d8288fe155d490fa993b40397cccc3ab387a6ce53ec372259",
+      "bytes": 4588,
+      "original_mode": "0o664",
+      "role": "Runnable finite regression or qualification fixture; no new sequence term"
+    },
+    {
+      "original": "check/fault.c",
+      "public": "check/fault.c",
+      "member": null,
+      "sha256": "f6db67fb5d1fddbbda7e05ad7908dd9219f9a3d92b49dc894face29a59921200",
+      "bytes": 1680,
+      "original_mode": "0o664",
+      "role": "Runnable finite regression or qualification fixture; no new sequence term"
+    },
+    {
+      "original": "check/output.c",
+      "public": "check/output.c",
+      "member": null,
+      "sha256": "a6c304aa3129856641d62b87c28d3ffeaa2b2b9fbced6974e4b88f0c8b3b84e8",
+      "bytes": 499,
+      "original_mode": "0o664",
+      "role": "Runnable finite regression or qualification fixture; no new sequence term"
+    },
+    {
+      "original": "check/tsan.c",
+      "public": "check/tsan.c",
+      "member": null,
+      "sha256": "5c9a7752340d524760b557b5f555074ba27da1b55b1804bbb57925a31dcdcefb",
+      "bytes": 434,
+      "original_mode": "0o664",
+      "role": "Runnable finite regression or qualification fixture; no new sequence term"
+    },
+    {
+      "original": "check/iekernel.cpp",
+      "public": "check/iekernel.cpp",
+      "member": null,
+      "sha256": "065e1ad4cad39537d2c7008a77b7c275f970ca96ea0139e11356a2d099d6f2c1",
+      "bytes": 973,
+      "original_mode": "0o664",
+      "role": "Runnable finite regression or qualification fixture; no new sequence term"
+    },
+    {
+      "original": "data/b180206.txt",
+      "public": "data/b180206.txt",
+      "member": null,
+      "sha256": "e0d0ffa64bcaf97f6c3188076f406e65fa9ae7db0fc9e2e8bcd8ed2d7f9eab40",
+      "bytes": 307,
+      "original_mode": "0o664",
+      "role": "Canonical contiguous counts 1..26; historical credit 1..16"
+    },
+    {
+      "original": "paper/A180206_v3.tex",
+      "public": "paper/A180206_v3.tex",
+      "member": null,
+      "sha256": "98a634de4b7d9bcd5e108cf4cd73bd88469fb3c744d141efde6bcef20e1fb040",
+      "bytes": 33134,
+      "original_mode": "0o664",
+      "role": "Current reviewed monolithic manuscript; exact unchanged bytes"
+    },
+    {
+      "original": "paper_review/round01/01_Claude_brute.c",
+      "public": "check/brute.c",
+      "member": null,
+      "sha256": "d7aeff0e3467b89d8ddc87df16aed7e4ae810a453f46bf53d1872f95b081f22b",
+      "bytes": 1118,
+      "original_mode": "0o664",
+      "role": "Reviewer-supplied definition check, original bytes"
+    },
+    {
+      "original": "paper_review/round01/01_Claude_freedp.c",
+      "public": "check/freedp.c",
+      "member": null,
+      "sha256": "e1a44afbedc0d517dfa19e4ec1e49f5edd5a1685d0cb07ae2b41c499ed8f65ea",
+      "bytes": 1138,
+      "original_mode": "0o664",
+      "role": "Reviewer-supplied free-start DP, original bytes"
+    },
+    {
+      "original": "src_review/round01/01_Claude_indep.py",
+      "public": "check/indep.py",
+      "member": null,
+      "sha256": "6850c0aa00fad2b7efe43a3c79f278ea90d4efa3b8802e322f4ec6dcef26eff2",
+      "bytes": 2507,
+      "original_mode": "0o664",
+      "role": "Reviewer-supplied Python free-start check through 16 and permutation checks through 9; requires NumPy"
+    },
+    {
+      "original": "src_review/round01/01_Claude_ftable.py",
+      "public": "check/ftable.py",
+      "member": null,
+      "sha256": "6fb509fce40e7fb27ef3a04987fc242431902c1e882548566faa8c28f30eb7be",
+      "bytes": 1824,
+      "original_mode": "0o664",
+      "role": "Reviewer-supplied all-coefficient comparison; input is a fresh small F table"
+    },
+    {
+      "original": "src_review/round01/01_GLM_census.c",
+      "public": "check/census.c",
+      "member": null,
+      "sha256": "ae74b13f26114fd0b370ee53311d110cf11c6397e71487d74b0b45bd4e04e4ac",
+      "bytes": 1405,
+      "original_mode": "0o664",
+      "role": "Reviewer-supplied difference-criterion census through 11"
+    },
+    {
+      "original": "paper_review/check_v1.py",
+      "public": "check/manuscript.py",
+      "member": null,
+      "sha256": "86a70ce6e821ca43daf7508bc3c4032068d8af9b442ab4a445cabb9339760e30",
+      "bytes": 4509,
+      "original_mode": "0o664",
+      "role": "Original manuscript checker, sole path adaptation v1 -> v3; mathematical checks unchanged",
+      "transformation": {
+        "original_sha256": "650d30c3bb11536d6d2aa3e330f85dd5bfcdd60bde3df1cb357611353fd02485",
+        "replace": [
+          "paper/A180206_v1.tex",
+          "paper/A180206_v3.tex"
+        ]
+      }
+    },
+    {
+      "original": "check/ie",
+      "public": null,
+      "member": "check/ie",
+      "sha256": "e2baf0c8e74e751932c5dd6274a9c42d3f5fb91bf8df049f59e470132244aa9b",
+      "bytes": 40560,
+      "original_mode": "0o775",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "outputs/post26/receipt.json",
+      "public": null,
+      "member": "outputs/post26/receipt.json",
+      "sha256": "9e25342026c3952bd57145e8a24886891028c406dbd59f6064fc81c0a9e9174f",
+      "bytes": 8766,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runbooks/frozen.json",
+      "public": null,
+      "member": "runbooks/frozen.json",
+      "sha256": "c748f8c2db8ec758a253b51b3815dfbc1b617a058bdf15093c158880b7e5da5f",
+      "bytes": 7384,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/consol.json",
+      "public": null,
+      "member": "runs/n24/consol.json",
+      "sha256": "41587eddb42c1ef2c59815236162677f3227c61593ecfca0bd2fd8bf4b4a3760",
+      "bytes": 556,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ie/cnt.tsv",
+      "public": null,
+      "member": "runs/n24/ie/cnt.tsv",
+      "sha256": "978675becb5d74fdf7f6a153e21d9c9731c6bc9727caac002cc6484fa3a9e1ab",
+      "bytes": 459,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ie/ctl.bin",
+      "public": null,
+      "member": "runs/n24/ie/ctl.bin",
+      "sha256": "ca60d543e370ab9cfe39ae5778159135a144b336e18468666b271c2ef7cdfe90",
+      "bytes": 672,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ops/c001/call.json",
+      "public": null,
+      "member": "runs/n24/ops/c001/call.json",
+      "sha256": "171859bcc2059f03306ea5e2f18f2b038e3f8da48359625f858ce8aa11a4b74c",
+      "bytes": 1078,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ops/c001/done.json",
+      "public": null,
+      "member": "runs/n24/ops/c001/done.json",
+      "sha256": "d3fac48f8e28186eb52321a5314586e2496df9e29c6ac0261dec442d7ec074c1",
+      "bytes": 211,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ops/i001/call.json",
+      "public": null,
+      "member": "runs/n24/ops/i001/call.json",
+      "sha256": "1909c2fd23bffbc676e7cbf289f3673d37b516450cf2e9d29c103f328ea252a0",
+      "bytes": 1207,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ops/i001/done.json",
+      "public": null,
+      "member": "runs/n24/ops/i001/done.json",
+      "sha256": "e7013b7a475279899d1f38758faa93c41d6b508d6083f2f85b478b7b64f86cee",
+      "bytes": 1344,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ops/p001/call.json",
+      "public": null,
+      "member": "runs/n24/ops/p001/call.json",
+      "sha256": "07564b5ba9369c6accda8fabd513796a1146703daaddb9cdd7cd94536d758f41",
+      "bytes": 1215,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ops/p001/done.json",
+      "public": null,
+      "member": "runs/n24/ops/p001/done.json",
+      "sha256": "cf17f4954145a80047ca48c687093c8f9426ff426c249a1efe8d1a6ca5e5f3ac",
+      "bytes": 1182,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ops/v001/call.json",
+      "public": null,
+      "member": "runs/n24/ops/v001/call.json",
+      "sha256": "12ebbaf20a8e26c1f69f6eb1bc1a4e2f4703e3adaa901b253713e8eb1e6f938e",
+      "bytes": 1655,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ops/v001/crt.tsv",
+      "public": null,
+      "member": "runs/n24/ops/v001/crt.tsv",
+      "sha256": "3018fa83f960a464c1bd347c3600bfbd9a12815fda19ccf9bf0e4d1cadbb30da",
+      "bytes": 261,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/ops/v001/done.json",
+      "public": null,
+      "member": "runs/n24/ops/v001/done.json",
+      "sha256": "fdc458b890fcd5a7c07c90cd88c012ba4c4d2785481647154e3e80fdafbe810e",
+      "bytes": 225,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/prod/base.txt",
+      "public": null,
+      "member": "runs/n24/prod/base.txt",
+      "sha256": "39bf3f5178e52efbd203405d13ab38d8eb6448ac6d928de90a73c6877fdfefae",
+      "bytes": 122,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/prod/cnt.tsv",
+      "public": null,
+      "member": "runs/n24/prod/cnt.tsv",
+      "sha256": "3018fa83f960a464c1bd347c3600bfbd9a12815fda19ccf9bf0e4d1cadbb30da",
+      "bytes": 261,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/prod/ctl.bin",
+      "public": null,
+      "member": "runs/n24/prod/ctl.bin",
+      "sha256": "e94ab02f96336ad0088d1b3e77b11da0cb1531cf164c32a82649b12e232e6327",
+      "bytes": 1024,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/prod/end.json",
+      "public": null,
+      "member": "runs/n24/prod/end.json",
+      "sha256": "767198fbba8a9d390618e1d5743f1a1ca4a52890f0f02d9c68675a6147c00fd0",
+      "bytes": 143,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/valid.json",
+      "public": null,
+      "member": "runs/n24/valid.json",
+      "sha256": "e45411da3235142f51508ec092379cb459c726751d3b02e1ded85719ca242d8a",
+      "bytes": 2087,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/consol.json",
+      "public": null,
+      "member": "runs/n26/consol.json",
+      "sha256": "4be357ae9f34931bc38115f2582ddff33cf8125c2f2b3161b8413af75f8487c6",
+      "bytes": 556,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ie/cnt.tsv",
+      "public": null,
+      "member": "runs/n26/ie/cnt.tsv",
+      "sha256": "cd5ad09668491d8d79fb52d255b74e95cd0f2679b6ae1398296648e48eceb55f",
+      "bytes": 543,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ie/ctl.bin",
+      "public": null,
+      "member": "runs/n26/ie/ctl.bin",
+      "sha256": "359715325b516c892ee70bd99831423e73d6b5db045ea52e8040ff6fde882dc7",
+      "bytes": 672,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ops/c001/call.json",
+      "public": null,
+      "member": "runs/n26/ops/c001/call.json",
+      "sha256": "d0f828f9bfdb39c1953ea1baa87b9e840ad14d5510ca95bdcc91c52065eaa570",
+      "bytes": 1078,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ops/c001/done.json",
+      "public": null,
+      "member": "runs/n26/ops/c001/done.json",
+      "sha256": "4c2e8635ef9171956a0a378f07170832188c91c19577b0e89a52758944f972cf",
+      "bytes": 209,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ops/i001/call.json",
+      "public": null,
+      "member": "runs/n26/ops/i001/call.json",
+      "sha256": "eac2f0104ec73a57ad3869abf96cabec2042a8e7ea6c2a5e79af066ea0c4cd88",
+      "bytes": 1207,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ops/i001/done.json",
+      "public": null,
+      "member": "runs/n26/ops/i001/done.json",
+      "sha256": "d743b5f8e781e78060cd37105993830853127f2bc15a79fed42150546523ecdf",
+      "bytes": 1351,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ops/p001/call.json",
+      "public": null,
+      "member": "runs/n26/ops/p001/call.json",
+      "sha256": "b26f962dd06782bbb1a7380ed112ca3aa874427faadedb4f86b91de72f15a0b9",
+      "bytes": 1215,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ops/p001/done.json",
+      "public": null,
+      "member": "runs/n26/ops/p001/done.json",
+      "sha256": "646b8929280ea65b4dafe4f34070cd030f1dc1715a2daa0e04ffcb06b774ca85",
+      "bytes": 1183,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ops/v001/call.json",
+      "public": null,
+      "member": "runs/n26/ops/v001/call.json",
+      "sha256": "b3f19664f81106893acd65791db06a229a78599dd328fdf561a681765d8f5136",
+      "bytes": 1655,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ops/v001/crt.tsv",
+      "public": null,
+      "member": "runs/n26/ops/v001/crt.tsv",
+      "sha256": "d9ca47a3c20275d718059b27af39913719e50cb5e2b7e9715a452b2cea7c0754",
+      "bytes": 306,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/ops/v001/done.json",
+      "public": null,
+      "member": "runs/n26/ops/v001/done.json",
+      "sha256": "0744737312f7fc14dd9347303de8ad0d7bbc0d2c0f15ddc556478f33dffcc2d8",
+      "bytes": 224,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/prod/base.txt",
+      "public": null,
+      "member": "runs/n26/prod/base.txt",
+      "sha256": "39bf3f5178e52efbd203405d13ab38d8eb6448ac6d928de90a73c6877fdfefae",
+      "bytes": 122,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/prod/cnt.tsv",
+      "public": null,
+      "member": "runs/n26/prod/cnt.tsv",
+      "sha256": "d9ca47a3c20275d718059b27af39913719e50cb5e2b7e9715a452b2cea7c0754",
+      "bytes": 306,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/prod/ctl.bin",
+      "public": null,
+      "member": "runs/n26/prod/ctl.bin",
+      "sha256": "11ca1ae33176936e457b6278f30ff3e6cac0f67b29010fe5e6ff95fdfc41c274",
+      "bytes": 1024,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/prod/end.json",
+      "public": null,
+      "member": "runs/n26/prod/end.json",
+      "sha256": "f5a77dd47ed299a7a1b7045bcc4bcbd9b9662eaefeedae81fd97586a709f9405",
+      "bytes": 143,
+      "original_mode": "0o600",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n26/valid.json",
+      "public": null,
+      "member": "runs/n26/valid.json",
+      "sha256": "031ec46293b77cbdb5fff2a10f92f07640908307475071b86457bc346af8837a",
+      "bytes": 2085,
+      "original_mode": "0o664",
+      "role": "Original committed campaign evidence; native image is identity data only"
+    },
+    {
+      "original": "runs/n24/prod/evt.bin",
+      "public": null,
+      "member": "runs/n24/prod/evt.bin",
+      "sha256": "9207cd2a5a960b20f544b5d4685e7b096fc2e54ec6cdc04544e9eb853365d294",
+      "bytes": 294912,
+      "original_mode": "0o600",
+      "role": "Original committed producer journal/configuration or numerical execution log"
+    },
+    {
+      "original": "runs/n24/prod/cfg.json",
+      "public": null,
+      "member": "runs/n24/prod/cfg.json",
+      "sha256": "ee2fc9c0a8c53632235ca8a35d59b30de0324b37a9ed835fd372be8c9f89a1f9",
+      "bytes": 412,
+      "original_mode": "0o600",
+      "role": "Original committed producer journal/configuration or numerical execution log"
+    },
+    {
+      "original": "runs/n24/ops/p001/run.log",
+      "public": null,
+      "member": "runs/n24/ops/p001/run.log",
+      "sha256": "a78c650436a2c6a061f058574d2dadf41b022686fa979047e9f297d67e086d38",
+      "bytes": 1162,
+      "original_mode": "0o664",
+      "role": "Original committed producer journal/configuration or numerical execution log"
+    },
+    {
+      "original": "runs/n24/ops/i001/run.log",
+      "public": null,
+      "member": "runs/n24/ops/i001/run.log",
+      "sha256": "c701245eca9b1d002feb88683d3f48b8f1ee025f10688fb3bec065e7c66af8d6",
+      "bytes": 756,
+      "original_mode": "0o664",
+      "role": "Original committed producer journal/configuration or numerical execution log"
+    },
+    {
+      "original": "runs/n26/prod/evt.bin",
+      "public": null,
+      "member": "runs/n26/prod/evt.bin",
+      "sha256": "15ee83a7d8bbb5804d2740cb4715211bb829592d7ff1734e758455c50128560a",
+      "bytes": 1083392,
+      "original_mode": "0o600",
+      "role": "Original committed producer journal/configuration or numerical execution log"
+    },
+    {
+      "original": "runs/n26/prod/cfg.json",
+      "public": null,
+      "member": "runs/n26/prod/cfg.json",
+      "sha256": "a7faeb0faf0fd873e02f6d669ada1a724440083b806b2b6df1c670be9767a0c5",
+      "bytes": 412,
+      "original_mode": "0o600",
+      "role": "Original committed producer journal/configuration or numerical execution log"
+    },
+    {
+      "original": "runs/n26/ops/p001/run.log",
+      "public": null,
+      "member": "runs/n26/ops/p001/run.log",
+      "sha256": "39a3f13b2372e90371d5ef6ccdec398c81eec4611f0cc9755f30a7c8bf390434",
+      "bytes": 3163,
+      "original_mode": "0o664",
+      "role": "Original committed producer journal/configuration or numerical execution log"
+    },
+    {
+      "original": "runs/n26/ops/i001/run.log",
+      "public": null,
+      "member": "runs/n26/ops/i001/run.log",
+      "sha256": "f900860d25930b72e36c27832af2b5b30b6efe6bb3347526f46438b677832965",
+      "bytes": 4103,
+      "original_mode": "0o664",
+      "role": "Original committed producer journal/configuration or numerical execution log"
+    },
+    {
+      "original": "src/a180206",
+      "public": null,
+      "member": "src/a180206",
+      "sha256": "e9b2c4bed9d144056a45e066cd90b3b322c7f2b13eedd452a14e807c6df3d4c8",
+      "bytes": 86472,
+      "original_mode": "0o775",
+      "role": "Original producer binary retained only as historical identity data"
+    },
+    {
+      "original": "outputs/storage/retain.json",
+      "public": null,
+      "member": "outputs/storage/retain.json",
+      "sha256": "424084a34582d4b3e449b8cc7c529db3484f8465905b24d5e3c86459a0fef813",
+      "bytes": 4194,
+      "original_mode": "0o664",
+      "role": "Author-authorized prior disposal; irrecoverable producer intermediate states"
+    },
+    {
+      "original": "outputs/dev/host.json",
+      "public": null,
+      "member": "outputs/dev/host.json",
+      "sha256": "b9c737b093d16fe2f8b1e86425e0d8d22655c5e1988acf91ce714f959317b9d1",
+      "bytes": 2335,
+      "original_mode": "0o664",
+      "role": "Original host and tool inventory; its candidate hashes are earlier development history"
+    },
+    {
+      "original": "outputs/dev/numeric.txt",
+      "public": null,
+      "member": "outputs/dev/numeric.txt",
+      "sha256": "b0459d8c1eb2ae473a27df147103a2cb2f681c95c284d3546694cffcd9bdce67",
+      "bytes": 326176,
+      "original_mode": "0o664",
+      "role": "Exact 768-row synthetic numeric transcript and forced 21! widening"
+    },
+    {
+      "original": "outputs/dev/numeric.log",
+      "public": null,
+      "member": "outputs/dev/numeric.log",
+      "sha256": "a5db7a098028cd8f366265093ab33f66cad39335c25e515fbe1ae7c4cb6af868",
+      "bytes": 168,
+      "original_mode": "0o664",
+      "role": "Timing of original synthetic fixture"
+    },
+    {
+      "original": "outputs/dev/qualvg.json",
+      "public": null,
+      "member": "outputs/dev/qualvg.json",
+      "sha256": "99496092dc1a3fe8be63481ace73b4112b3a6ed81616a605d1efa6a3382070a0",
+      "bytes": 3479,
+      "original_mode": "0o664",
+      "role": "Original passing Valgrind qualification; earlier source mechanisms reused"
+    },
+    {
+      "original": "outputs/rev01/reuse.json",
+      "public": null,
+      "member": "outputs/rev01/reuse.json",
+      "sha256": "edaaf8dabf3a7ccc33ab8bc186b5f9f7cde3a62f4d595e46385e3decd868cfb3",
+      "bytes": 2038,
+      "original_mode": "0o664",
+      "role": "Scope and byte-region identities for inherited synthetic/qualification evidence"
+    },
+    {
+      "original": "outputs/rev01/test.json",
+      "public": null,
+      "member": "outputs/rev01/test.json",
+      "sha256": "a363a053c8e08368ad936c84c6aa1f0906a56b30139cdefcc68b55f271d764a2",
+      "bytes": 46992,
+      "original_mode": "0o664",
+      "role": "Original 101-invocation release regression, known prefix 1..16"
+    },
+    {
+      "original": "outputs/rev01/qual/qualfail.json",
+      "public": null,
+      "member": "outputs/rev01/qual/qualfail.json",
+      "sha256": "13a522c13a73409628671e88eed278851d85c35b8f69d5d30951e099384f1d3d",
+      "bytes": 111439,
+      "original_mode": "0o664",
+      "role": "Original Clang/ASan matrices and failed Valgrind attempt; outer FAIL preserved"
+    },
+    {
+      "original": "outputs/rev01/tsan/qual.json",
+      "public": null,
+      "member": "outputs/rev01/tsan/qual.json",
+      "sha256": "b50b2132110f4e2dc0c1ad4203f4dd048a8b8394945cb897f4ee5b63fadb572c",
+      "bytes": 56675,
+      "original_mode": "0o664",
+      "role": "Original qualified TSan/Archer matrix and race controls"
+    },
+    {
+      "original": "outputs/rev01/san/test.json",
+      "public": null,
+      "member": "outputs/rev01/san/test.json",
+      "sha256": "d14538d36e2e96b576433cf5c5c915079fe7d6f46932ce7b7e0a2e0c2cb80c7e",
+      "bytes": 37996,
+      "original_mode": "0o664",
+      "role": "Original resource/recovery ASan/UBSan supplement"
+    },
+    {
+      "original": "outputs/rev01/analyze.json",
+      "public": null,
+      "member": "outputs/rev01/analyze.json",
+      "sha256": "8bdc2bb9f6d68e867aec0b4508a2679994095ac7e1e714896c0d05f5ddfc0b15",
+      "bytes": 872,
+      "original_mode": "0o664",
+      "role": "Original static-analysis commands and nonzero Cppcheck status"
+    },
+    {
+      "original": "outputs/rev01/cpp.log",
+      "public": null,
+      "member": "outputs/rev01/cpp.log",
+      "sha256": "cfa627d4afddce01e9e75f70b93072785ddadd8770f23477f8db6bc9f9653b32",
+      "bytes": 3621,
+      "original_mode": "0o664",
+      "role": "Original Cppcheck diagnostics, not a zero-warning certification"
+    },
+    {
+      "original": "outputs/rev01/tidy.log",
+      "public": null,
+      "member": "outputs/rev01/tidy.log",
+      "sha256": "ccd2edf9d9add22979b043405cf64d5752214a7a81ba37197edf7c057dc424dc",
+      "bytes": 43623,
+      "original_mode": "0o664",
+      "role": "Original clang-tidy diagnostics"
+    },
+    {
+      "original": "outputs/rev01/adjacent.json",
+      "public": null,
+      "member": "outputs/rev01/adjacent.json",
+      "sha256": "f2d1e25ae08e65733342de541c56d2f0fc7ffb38a8329ed9821ba6363695ca30",
+      "bytes": 8988,
+      "original_mode": "0o664",
+      "role": "Original local all-coefficient comparison and resource-test record"
+    },
+    {
+      "original": "outputs/strategy/probe.py",
+      "public": null,
+      "member": "outputs/strategy/probe.py",
+      "sha256": "04b99cb9c6d5cda317da18426267ff613bb4584d8f8f9d95bdd7ae2e040ad825",
+      "bytes": 6418,
+      "original_mode": "0o664",
+      "role": "Original arbitrary-precision weighted DP; restore historical sixteen-row baseline before running"
+    },
+    {
+      "original": "outputs/strategy/probe.json",
+      "public": null,
+      "member": "outputs/strategy/probe.json",
+      "sha256": "c6683b78502f8ab737858ee11e918353ec28e5ae078a7762280e956a8e48af4f",
+      "bytes": 6318,
+      "original_mode": "0o664",
+      "role": "Original arbitrary-precision replay and geometry output"
+    },
+    {
+      "original": "outputs/rev01/claude.log",
+      "public": null,
+      "member": "outputs/rev01/claude.log",
+      "sha256": "61493233e30640f7f1318e78e100bf0c1445ea2483b365bed96ae124fc751ed5",
+      "bytes": 794,
+      "original_mode": "0o664",
+      "role": "Original local free-start and permutation results through 16 and 9"
+    },
+    {
+      "original": "outputs/rev01/glm.log",
+      "public": null,
+      "member": "outputs/rev01/glm.log",
+      "sha256": "a3e254a4523dd83b5a785d4518fd49a0dbe13bcf4eb421ec2cd313408e695d3e",
+      "bytes": 1840,
+      "original_mode": "0o664",
+      "role": "Original locally executed arithmetic and definition checks"
+    },
+    {
+      "original": "outputs/rev02/numeric.json",
+      "public": null,
+      "member": "outputs/rev02/numeric.json",
+      "sha256": "0aa61e5091eb7af31470656997027b76cc93aedf68e7b773219f4a89c4567e93",
+      "bytes": 514,
+      "original_mode": "0o664",
+      "role": "Fresh retrospective validation of exact synthetic transcript"
+    },
+    {
+      "original": "outputs/rev02/tools.json",
+      "public": null,
+      "member": "outputs/rev02/tools.json",
+      "sha256": "9fc06cede5da4c87d8ea21363c67b7705a524a2c4d2f478b9b214f1edcea3aa5",
+      "bytes": 2429,
+      "original_mode": "0o664",
+      "role": "Relevant tool and dynamic-library identities"
+    },
+    {
+      "original": "outputs/rev02/scan.json",
+      "public": null,
+      "member": "outputs/rev02/scan.json",
+      "sha256": "b741b1db0994bf80757134deb113e2bb59467ee4c7d6612dfd715c277dc52314",
+      "bytes": 1322,
+      "original_mode": "0o664",
+      "role": "Retrospective diagnostic scan with explicitly stated scope"
+    },
+    {
+      "original": "outputs/rev02/target/test.json",
+      "public": null,
+      "member": "outputs/rev02/target/test.json",
+      "sha256": "92a67aac5ef052f6b070a75c0018774de8a067789681a5ec733d524ed413a2a2",
+      "bytes": 32772,
+      "original_mode": "0o664",
+      "role": "Original 48-invocation resource/recovery delta validation"
+    },
+    {
+      "original": "outputs/rev02/extra/test.json",
+      "public": null,
+      "member": "outputs/rev02/extra/test.json",
+      "sha256": "fb74a3174810902713f18582162306c4656144c20d2deab623bf04fe3ba195bc",
+      "bytes": 10170,
+      "original_mode": "0o664",
+      "role": "Original 15-invocation final finite recovery supplement"
+    },
+    {
+      "original": "src_review/round01/a180206.c.txt",
+      "public": null,
+      "member": "proof/base.c",
+      "sha256": "f70bac56feaf52e3e546fcc46e594ad4cc27c2a46b752036c04ab04473595218",
+      "bytes": 31533,
+      "original_mode": "0o664",
+      "role": "Exact predecessor source needed to audit inherited numerical mechanisms"
+    },
+    {
+      "original": "paper_review/round02/support.md#local-executions",
+      "public": null,
+      "member": "proof/review.json",
+      "sha256": "feaa2066fd129b54d912bbe30644ac1216c748deb0601e8bae658d2c5575928c",
+      "bytes": 5954,
+      "original_mode": null,
+      "role": "Exact original reviewer-program execution JSON extracted from retained exhibit"
+    }
+  ],
+  "disposal": "The four F/last-layer files in outputs/storage/retain.json have no archive and cannot be restored.",
+  "identity": {
+    "canonical_name": "Carlo Corti",
+    "authority": "Mutually consistent current author-approved A180206_v3.tex, existing GitHub/LICENSE and reviewed canonical C/Makefile",
+    "email": "carlo.corti@outlook.com"
+  }
+}

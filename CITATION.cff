@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "Please cite the manuscript and the software when using these results."
+type: software
+title: "A180206: exact enumeration through n=26"
+version: "v1.0"
+date-released: 2026-11-19
+authors:
+  - family-names: Corti
+    given-names: Carlo
+    email: carlo.corti@outlook.com
+abstract: >-
+  Exact counts of permutations of 0 through n-1 representable as consecutive
+  sums of three adjacent nonnegative integers. Weighted subset enumeration
+  and a modular inclusion-exclusion recount agree through n=26. Includes
+  canonical data, the monolithic manuscript, sources, retained execution
+  evidence and bounded validation tools.
+keywords:
+  - OEIS
+  - A180206
+  - permutations
+  - subset dynamic programming
+  - inclusion-exclusion
+license: MIT
+repository-code: "https://github.com/carcorti/A180206"
+url: "https://doi.org/10.5281/zenodo.xxxxxxxx"
+doi: "10.5281/zenodo.xxxxxxxx"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Corti
+      given-names: Carlo
+      email: carlo.corti@outlook.com
+  title: "Counting Permutations of Consecutive Triple Sums: OEIS A180206 through n=26"
+  year: 2026
+  doi: "10.5281/zenodo.xxxxxxxx"
+  url: "https://doi.org/10.5281/zenodo.xxxxxxxx"

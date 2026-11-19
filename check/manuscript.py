@@ -103,5 +103,5 @@ if __name__ == '__main__':
     expected = rows(ROOT/'data/b180206.txt')
     assert list(expected) == list(range(1,27))
     verify_examples(expected)
-    check_tables((ROOT/'paper/A180206_v3.tex').read_text(), expected)
+    check_tables((ROOT/'paper/A180206.tex').read_text(), expected)
     print('PASS: direct membership 1..8, tail/width witnesses, arithmetic, both tables, receipt and work totals')

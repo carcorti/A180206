@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "sequence": "A180206",
-  "status": "PACKAGE_DRAFT — AWAITING AUTHOR INSPECTION",
+  "status": "RELEASE_PACKAGE",
   "archive": "proof/run.tgz",
   "archive_sha256": "6da7325c1dae40e5e28f1fc4e025ac45d02c2fe6fb84f72df36775c25b64acb9",
   "archive_members": 71,
@@ -143,13 +143,13 @@
       "role": "Canonical contiguous counts 1..26; historical credit 1..16"
     },
     {
-      "original": "paper/A180206_v3.tex",
-      "public": "paper/A180206_v3.tex",
+      "original": "paper/A180206.tex",
+      "public": "paper/A180206.tex",
       "member": null,
-      "sha256": "98a634de4b7d9bcd5e108cf4cd73bd88469fb3c744d141efde6bcef20e1fb040",
-      "bytes": 33134,
+      "sha256": "b0dd25705f60aa227178e34dd5f7fd6b43ac404b5dbaca640961558a96eb1d4a",
+      "bytes": 33471,
       "original_mode": "0o664",
-      "role": "Current reviewed monolithic manuscript; exact unchanged bytes"
+      "role": "Final monolithic manuscript, with confirmed series DOI and repository locator"
     },
     {
       "original": "paper_review/round01/01_Claude_brute.c",
@@ -200,16 +200,13 @@
       "original": "paper_review/check_v1.py",
       "public": "check/manuscript.py",
       "member": null,
-      "sha256": "86a70ce6e821ca43daf7508bc3c4032068d8af9b442ab4a445cabb9339760e30",
-      "bytes": 4509,
+      "sha256": "d976fa25a4f89c14d720b73d80e36b8b4e0b36f35f5e011d45ea656477e762b7",
+      "bytes": 4506,
       "original_mode": "0o664",
-      "role": "Original manuscript checker, sole path adaptation v1 -> v3; mathematical checks unchanged",
+      "role": "Original mathematical checks unchanged; publication path routes to final manuscript",
       "transformation": {
         "original_sha256": "650d30c3bb11536d6d2aa3e330f85dd5bfcdd60bde3df1cb357611353fd02485",
-        "replace": [
-          "paper/A180206_v1.tex",
-          "paper/A180206_v3.tex"
-        ]
+        "scope": "Manuscript path routing only; mathematical assertions unchanged"
       }
     },
     {
@@ -855,7 +852,8 @@
   "disposal": "The four F/last-layer files in outputs/storage/retain.json have no archive and cannot be restored.",
   "identity": {
     "canonical_name": "Carlo Corti",
-    "authority": "Mutually consistent current author-approved A180206_v3.tex, existing GitHub/LICENSE and reviewed canonical C/Makefile",
+    "authority": "Carlo Corti, confirmed current manuscript, existing LICENSE and reviewed canonical C/Makefile",
     "email": "carlo.corti@outlook.com"
-  }
+  },
+  "release": "v1.0.2"
 }

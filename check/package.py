@@ -143,8 +143,8 @@ def builds(root, guarded):
 def tex():
     with tempfile.TemporaryDirectory(prefix='a206-tex-') as directory:
         work = Path(directory)
-        source = work/'A180206_v3.tex'
-        source.write_bytes((ROOT/'paper/A180206_v3.tex').read_bytes())
+        source = work/'A180206.tex'
+        source.write_bytes((ROOT/'paper/A180206.tex').read_bytes())
         for _ in range(3):
             run(['pdflatex','-draftmode','-interaction=nonstopmode','-halt-on-error',source.name], cwd=work)
         log = source.with_suffix('.log').read_text()
@@ -177,7 +177,7 @@ def main():
         paper = module('manuscript')
         paper.ROOT = work
         paper.verify_examples(expected)
-        paper.check_tables((ROOT/'paper/A180206_v3.tex').read_text(), expected)
+        paper.check_tables((ROOT/'paper/A180206.tex').read_text(), expected)
         require(run([sys.executable,'-I','-B',ROOT/'check/numeric.py',work/'outputs/dev/numeric.txt']).strip(),
                 'Synthetic numeric replay')
         guarded = review(work,expected)

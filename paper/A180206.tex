@@ -4,6 +4,12 @@
 \usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype}
 \usepackage[margin=1in]{geometry}
 \usepackage[colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{pdftitle={Counting Permutations of Consecutive Triple Sums: OEIS A180206 through n=26},
+  pdfauthor={Carlo Corti},pdfsubject={Exact enumeration of OEIS A180206},
+  pdfkeywords={OEIS A180206, permutations, subset dynamic programming, inclusion-exclusion}}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=15
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -528,11 +534,11 @@ one-line change that checks the terminal sum, and the local execution
 records. Both programs and the modified version were compiled with
 GCC 13.3.0 using \texttt{-std=c17 -O2}.
 The discarded subset tables and layers have no archive. Recomputing them
-would generate new states. A public release of this project
-has yet to be verified. The GitHub address in the References designates
-the intended repository. The Zenodo DOI placeholder will be replaced
-after the first Zenodo publication when the author supplies the verified
-official locator.
+would generate new states. The retained material, together with the source and PDF of this paper,
+is available from the GitHub repository and Zenodo release series in
+reference~\cite{project}. The Zenodo DOI identifies the release series,
+rather than one immutable software release. Tagged GitHub releases and
+version-specific Zenodo records distinguish the distributed versions.
 
 \section*{AI use disclosure}
 OpenAI Codex assisted with mathematical analysis, implementation and
@@ -640,10 +646,9 @@ M\"obius functions, \emph{Z. Wahrscheinlichkeitstheorie verw. Gebiete}
 
 \bibitem{project}
 C. Corti, \emph{Counting Permutations of Consecutive Triple Sums:
-OEIS A180206 through \(n=26\)}, GitHub repository and Zenodo archive, 2026.
+OEIS A180206 through \(n=26\)}, GitHub repository and Zenodo release series, 2026.
 \url{https://github.com/carcorti/A180206}.
-\url{https://doi.org/10.5281/zenodo.xxxxxxxx}.
-Intended release locators. The DOI placeholder awaits the first publication
-on Zenodo and the author's verified official locator.
+\url{https://doi.org/10.5281/zenodo.24361784}.
+The DOI identifies the Zenodo release series.
 \end{thebibliography}
 \end{document}
